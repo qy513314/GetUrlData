@@ -22,11 +22,9 @@ def find_data(res):
 	data = []
 	soup = bs4.BeautifulSoup(res.text, "html.parser")
 	content = soup.find(id="Cnt-Main-Article-QQ")
-	print(content)
 	target = content.find_all("p", style="TEXT-INDENT: 2em")
 	target = iter(target)
 	for each in target:
-		print(each)
 		if each.text.isnumeric():
 			data.append([
 				re.search(r'\[(.+)\]', next(target).text).group(1),
